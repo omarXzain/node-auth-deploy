@@ -44,35 +44,35 @@ const port = process.env.PORT || 3000;
 // pool
 //   .connect()
 //   .then(() => {
-//     app.listen(port, () => {
-//       console.log(`App is listning on port http://localhost:${port}`);
-//     });
+app.listen(port, () => {
+  console.log(`App is listning on port http://localhost:${port}`);
+});
+// })
+// .catch((err) => {
+//   console.error("Could not connect to database:", err);
+// });
+
+// pool
+//   .connect()
+//   .then((client) => {
+//     return client
+//       .query("SELECT current_database(), current_user")
+//       .then((res) => {
+//         client.release();
+
+//         const dbName = res.rows[0].current_database;
+//         const dbUser = res.rows[0].current_user;
+
+//         console.log(
+//           `Connected to PostgreSQL as user '${dbUser}' on database '${dbName}'`
+//         );
+
+//         console.log(`App listening on port http://localhost:${port}`);
+//       });
+//   })
+//   .then(() => {
+//     app.listen(port);
 //   })
 //   .catch((err) => {
 //     console.error("Could not connect to database:", err);
 //   });
-
-pool
-  .connect()
-  .then((client) => {
-    return client
-      .query("SELECT current_database(), current_user")
-      .then((res) => {
-        client.release();
-
-        const dbName = res.rows[0].current_database;
-        const dbUser = res.rows[0].current_user;
-
-        console.log(
-          `Connected to PostgreSQL as user '${dbUser}' on database '${dbName}'`
-        );
-
-        console.log(`App listening on port http://localhost:${port}`);
-      });
-  })
-  .then(() => {
-    app.listen(port);
-  })
-  .catch((err) => {
-    console.error("Could not connect to database:", err);
-  });
